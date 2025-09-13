@@ -21,10 +21,19 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
-//W02 TeamActivity
+
+// get the product id from the query string
 export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  return urlParams.get(param);
+  const product = urlParams.get(param);
+  return product
 }
 
+export function renderListWithTemplate(template, parentElement, list, position = "afterbegin", clear = false) {
+  const htmlStrings = list.map(template);
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}
