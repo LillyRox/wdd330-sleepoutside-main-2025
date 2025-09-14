@@ -26,3 +26,10 @@ _BYU-Pathway Worldwide improves lives through access to spiritually based, onlin
 ### WO1 Individual Activity: Add Item to Cart
 - https://byui-cse.github.io/wdd330-ww-course/week01/individual.html
 ![alt text](image.png)
+
+### W02 Individual Activity: Dynamic Product List
+- https://byui-cse.github.io/wdd330-ww-course/week02/individual.html
+![alt text](image-1.png)
+![alt text](image-2.png)
+
+- https://wdd330-sleepoutside-2025.netlify.app/
