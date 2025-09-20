@@ -33,3 +33,10 @@ _BYU-Pathway Worldwide improves lives through access to spiritually based, onlin
 ![alt text](image-2.png)
 
 - https://wdd330-sleepoutside-2025.netlify.app/
+
+### W03 Individual Activity: Dynamic Product List 
+- https://byui-cse.github.io/wdd330-ww-course/week03/individual.html
+![alt text](image-3.png)
+![alt text](image-4.png)
+![alt text](image-5.png)
+![alt text](image-6.png)
