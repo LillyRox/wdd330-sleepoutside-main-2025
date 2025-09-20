@@ -168,6 +168,11 @@ button {
   color: var(--dark-grey);
 }
 
+.product-list img {
+  display: block;
+  margin: 1rem auto;
+}
+
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
