@@ -261,3 +261,11 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+.product-list img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
