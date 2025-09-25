@@ -13,14 +13,12 @@ export default class ExternalServices {
   constructor() {}
 
   async getOrders() {
-    // Simulación de llamada a la API
     const response = await fetch(`${baseURL}orders`);
     const data = await convertToJson(response);
     return data.Result;
   }
 
-  async saveOrder(orderData) {
-    // Simulación de guardar orden
+  async checkout(orderData) {
     const response = await fetch(`${baseURL}checkout`, {
       method: "POST",
       headers: {
