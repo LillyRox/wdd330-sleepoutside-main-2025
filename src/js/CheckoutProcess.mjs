@@ -15,12 +15,16 @@ export default class CheckoutProcess {
   init() {
     this.list = getLocalStorage(this.key) || [];
     this.calculateItemSubTotal();
-    this.calculateOrderTotal(); 
+    this.calculateOrderTotal();
   }
 
   calculateItemSubTotal() {
-    this.itemTotal = this.list.reduce((sum, item) => sum + (item.FinalPrice * item.Qty), 0);
-    document.querySelector(`${this.outputSelector} #subtotal`).innerText = this.itemTotal.toFixed(2);
+    this.itemTotal = this.list.reduce(
+      (sum, item) => sum + (item.FinalPrice * item.Qty),
+      0
+    );
+    document.querySelector(`${this.outputSelector} #subtotal`).innerText =
+      this.itemTotal.toFixed(2);
   }
 
   calculateOrderTotal() {
@@ -31,9 +35,12 @@ export default class CheckoutProcess {
   }
 
   displayOrderTotals() {
-    document.querySelector(`${this.outputSelector} #tax`).innerText = this.tax.toFixed(2);
-    document.querySelector(`${this.outputSelector} #shipping`).innerText = this.shipping.toFixed(2);
-    document.querySelector(`${this.outputSelector} #cart-total`).innerText = this.orderTotal.toFixed(2);
+    document.querySelector(`${this.outputSelector} #tax`).innerText =
+      this.tax.toFixed(2);
+    document.querySelector(`${this.outputSelector} #shipping`).innerText =
+      this.shipping.toFixed(2);
+    document.querySelector(`${this.outputSelector} #cart-total`).innerText =
+      this.orderTotal.toFixed(2);
   }
 
   packageItems() {
@@ -41,7 +48,7 @@ export default class CheckoutProcess {
       id: item.Id,
       name: item.Name,
       price: item.FinalPrice,
-      quantity: item.Qty 
+      quantity: item.Qty
     }));
   }
 
