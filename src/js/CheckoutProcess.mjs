@@ -70,7 +70,7 @@ export default class CheckoutProcess {
       console.log("Server response:", response);
 
       localStorage.removeItem(this.key);
-      window.location.href = "/checkout/success.html";
+      window.location.href = "success.html";
     } catch (err) {
       console.error("Checkout error:", err);
       import("./utils.mjs").then(utils => {
