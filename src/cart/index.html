@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -20,7 +19,10 @@
       </section>
 
       <div class="cart-footer hide">
-        <p class="cart-total">Total: $</p>
+        <p class="cart-total">Total: $<span id="cart-total">0.00</span></p>
+        <a href="/checkout/index.html">
+          <button type="button" id="checkout-button">Proceed to Checkout</button>
+        </a>
       </div>
     </main>
 
