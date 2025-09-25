@@ -33,7 +33,7 @@ export default class CheckoutProcess {
   displayOrderTotals() {
     document.querySelector(`${this.outputSelector} #tax`).innerText = this.tax.toFixed(2);
     document.querySelector(`${this.outputSelector} #shipping`).innerText = this.shipping.toFixed(2);
-    document.querySelector(`${this.outputSelector} #order-total`).innerText = this.orderTotal.toFixed(2);
+    document.querySelector(`${this.outputSelector} #cart-total`).innerText = this.orderTotal.toFixed(2);
   }
 
   packageItems() {
