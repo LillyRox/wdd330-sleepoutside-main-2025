@@ -70,7 +70,15 @@ export default class CheckoutProcess {
       console.log("Server response:", response);
 
       localStorage.removeItem(this.key);
-      window.location.href = "success.html";
+      this.list = [];
+      this.calculateItemSubTotal();
+      this.calculateOrderTotal();
+      
+      form.reset();
+
+      import("./utils.mjs").then(utils => {
+        utils.alertMessage("Your order was placed successfully!", true);
+      });
     } catch (err) {
       console.error("Checkout error:", err);
       import("./utils.mjs").then(utils => {
