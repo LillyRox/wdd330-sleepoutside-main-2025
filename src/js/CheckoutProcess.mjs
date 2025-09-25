@@ -66,5 +66,14 @@ export default class CheckoutProcess {
     const services = new ExternalServices();
     const response = await services.checkout(order);
     console.log("Server response:", response);
+
+    localStorage.removeItem(this.key);  
+    window.location.href = "/checkout/success.html"; 
+
+  } catch (err) {
+    console.error(err);
+    import("./utils.mjs").then(utils => {
+      utils.alertMessage(`Checkout failed: ${JSON.stringify(err.message)}`);
+    })
   }
 }

@@ -15,4 +15,10 @@ document.querySelector("#zip").addEventListener("blur", () => {
 document.querySelector("#checkout-form").addEventListener("submit", (e) => {
   e.preventDefault(); 
   checkout.checkout(e.target); 
+  const isValid = myForm.checkValidity();
+  myForm.reportValidity();
+  
+  if (isValid) {
+    checkout.checkout(myForm);
+  }
 });

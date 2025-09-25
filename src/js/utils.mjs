@@ -64,4 +64,22 @@ export async function loadHeaderFooter() {
 
 export function getDiscount(suggestedRetailPrice, finalPrice) {
   return Math.round(((suggestedRetailPrice - finalPrice) / suggestedRetailPrice) * 100);
+
 }
+export function alertMessage(message, scroll = true) {
+  const alert = document.createElement("div");
+  alert.classList.add("alert");
+  alert.innerHTML = `
+    <span>${message}</span>
+    <button class="close-alert" aria-label="Close">&times;</button>
+  `;
+  
+  const main = document.querySelector("main");
+  main.prepend(alert);
+
+  const closeButton = alert.querySelector(".close-alert");
+  closeButton.addEventListener("click", () => main.removeChild(alert));
+
+  if (scroll) window.scrollTo(0, 0);
+}
+
