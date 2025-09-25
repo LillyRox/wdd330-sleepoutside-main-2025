@@ -3,9 +3,7 @@ import CheckoutProcess from "./CheckoutProcess.mjs";
 
 loadHeaderFooter();
 
-
 const checkout = new CheckoutProcess("so-cart", ".order-summary");
-
 checkout.init();
 
 document.querySelector("#zip").addEventListener("blur", () => {
@@ -13,12 +11,13 @@ document.querySelector("#zip").addEventListener("blur", () => {
 });
 
 document.querySelector("#checkout-form").addEventListener("submit", (e) => {
-  e.preventDefault(); 
-  checkout.checkout(e.target); 
-  const isValid = myForm.checkValidity();
-  myForm.reportValidity();
-  
+  e.preventDefault();
+
+  const form = e.target; 
+  const isValid = form.checkValidity();
+  form.reportValidity();
+
   if (isValid) {
-    checkout.checkout(myForm);
+    checkout.checkout(form);
   }
 });

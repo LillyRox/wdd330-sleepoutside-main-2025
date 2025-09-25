@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs"; 
+import { getLocalStorage } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
 export default class CheckoutProcess {
@@ -20,7 +20,7 @@ export default class CheckoutProcess {
 
   calculateItemSubTotal() {
     this.itemTotal = this.list.reduce(
-      (sum, item) => sum + (item.FinalPrice * item.Qty),
+      (sum, item) => sum + item.FinalPrice * item.Qty,
       0
     );
     document.querySelector(`${this.outputSelector} #subtotal`).innerText =
@@ -55,7 +55,7 @@ export default class CheckoutProcess {
   async checkout(form) {
     const formData = new FormData(form);
     const order = {};
-    formData.forEach((value, key) => order[key] = value);
+    formData.forEach((value, key) => (order[key] = value));
 
     order.orderDate = new Date().toISOString();
     order.items = this.packageItems();
@@ -64,16 +64,24 @@ export default class CheckoutProcess {
     order.shipping = this.shipping;
 
     const services = new ExternalServices();
-    const response = await services.checkout(order);
-    console.log("Server response:", response);
 
-    localStorage.removeItem(this.key);  
-    window.location.href = "/checkout/success.html"; 
+    try {
+      const response = await services.checkout(order);
+      console.log("Server response:", response);
 
-  } catch (err) {
-    console.error(err);
-    import("./utils.mjs").then(utils => {
-      utils.alertMessage(`Checkout failed: ${JSON.stringify(err.message)}`);
-    })
+      localStorage.removeItem(this.key);
+      window.location.href = "/checkout/success.html";
+    } catch (err) {
+      console.error("Checkout error:", err);
+      import("./utils.mjs").then(utils => {
+        utils.alertMessage(
+          `Checkout failed: ${
+            typeof err.message === "object"
+              ? JSON.stringify(err.message)
+              : err.message
+          }`
+        );
+      });
+    }
   }
 }
