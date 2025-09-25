@@ -13,19 +13,19 @@ export default class CheckoutProcess {
   }
 
   init() {
-    this.list = getLocalStorage(this.key);
+    this.list = getLocalStorage(this.key) || [];
     this.calculateItemSubTotal();
-    
+    this.calculateOrderTotal(); 
   }
 
   calculateItemSubTotal() {
-    this.itemTotal = this.list.reduce((sum, item) => sum + (item.FinalPrice * item.quantity), 0);
+    this.itemTotal = this.list.reduce((sum, item) => sum + (item.FinalPrice * item.Qty), 0);
     document.querySelector(`${this.outputSelector} #subtotal`).innerText = this.itemTotal.toFixed(2);
   }
 
   calculateOrderTotal() {
     this.tax = this.itemTotal * 0.06;
-    this.shipping = 10 + (this.list.length - 1) * 2;
+    this.shipping = this.list.length > 0 ? 10 + (this.list.length - 1) * 2 : 0;
     this.orderTotal = this.itemTotal + this.tax + this.shipping;
     this.displayOrderTotals();
   }
@@ -41,7 +41,7 @@ export default class CheckoutProcess {
       id: item.Id,
       name: item.Name,
       price: item.FinalPrice,
-      quantity: item.quantity
+      quantity: item.Qty 
     }));
   }
 
