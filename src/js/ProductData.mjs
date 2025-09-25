@@ -8,7 +8,7 @@ function convertToJson(res) {
   }
 }
 
-export default class ProductData {
+export default class ExternalServices {
   constructor() {}
 
   async getData(category) {
@@ -21,5 +21,24 @@ export default class ProductData {
     const response = await fetch(`${baseURL}product/${id}`);
     const data = await convertToJson(response);
     return data.Result;
+  }
+
+  
+  async checkout(orderData) {
+    try {
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      };
+
+      const response = await fetch(`${baseURL}checkout`, options);
+      return await convertToJson(response);
+    } catch (err) {
+      console.error("Checkout failed:", err);
+      throw err;
+    }
   }
 }
