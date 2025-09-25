@@ -21,7 +21,7 @@ function renderCartContents() {
 
 function getTotal(cartItems) {
   const totalCartValue = cartItems.reduce(
-    (total, item) => total + item.FinalPrice,
+    (total, item) => total + (item.FinalPrice * item.Qty),
     0,
   );
   const cartTotalElement = document.querySelector(".cart-total");
