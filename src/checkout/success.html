@@ -1,19 +1,29 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Order Successful</title>
-  <link rel="stylesheet" href="../css/style.css" />
-</head>
-<body>
-  <header id="main-header"></header>
-  <main>
-    <h2>Thank you for your order!</h2>
-    <p>Your order has been successfully placed. You will receive an email confirmation shortly.</p>
-    <a href="/index.html"><button>Return to Home</button></a>
-  </main>
-  <footer id="main-footer"></footer>
-  <script type="module" src="../js/utils.mjs"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep Outside | Order Success</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script type="module">
+      import { loadHeaderFooter } from "../js/utils.mjs";
+      loadHeaderFooter();
+    </script>
+  </head>
+
+  <body>
+    <header class="divider" id="main-header"></header>
+
+    <main class="divider">
+      <section class="success">
+        <h2>Thank you for your order!</h2>
+        <p>Your order has been placed successfully.</p>
+        <p>We’ve sent a confirmation email with the details.</p>
+
+        <a href="../index.html" class="button">Return to Home</a>
+      </section>
+    </main>
+
+    <footer id="main-footer"></footer>
+  </body>
 </html>
